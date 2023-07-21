@@ -57,9 +57,9 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
                 echo "Build stage Dev"
          script{      
  if(params.CHECK_TEST==false){
-		bat "'${mvnHome}\\bin\\mvn' -B -DskipTests clean package"
+		cmd "'${mvnHome}\\bin\\mvn' -B -DskipTests clean package"
 		       }else{
-			 bat "'${mvnHome}\\bin\\mvn' -B  clean package"   
+			 cmd "'${mvnHome}\\bin\\mvn' -B  clean package"   
 		       }
 	 }
             }
