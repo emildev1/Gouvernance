@@ -101,14 +101,14 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
     
     stage('Build Docker Image') {
 	    steps{
-     bat "docker -H  tcp://10.12.1.254:2375 build -t devopsexamplenew123456:${env.BUILD_NUMBER} ."
+     bat "docker -H  tcp://127.0.0.1:2375 build -t devopsexamplenew123456:${env.BUILD_NUMBER} ."
 	    }
     }
     
     stage('Deploy Docker Image'){
 	    steps{
       	echo "Docker Image Tag Name: ${dockerImageTag}"
-	bat "docker -H  tcp://10.12.1.254:2375 run --name devopsexamplenew123456:${env.BUILD_NUMBER} -d -p 2222:2222 devopsexamplenew123456:${env.BUILD_NUMBER}"
+	bat "docker -H  tcp://127.0.0.1:2375 run --name devopsexamplenew123456:${env.BUILD_NUMBER} -d -p 2222:2222 devopsexamplenew123456:${env.BUILD_NUMBER}"
 	    }
     }
 	  
