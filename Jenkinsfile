@@ -76,18 +76,18 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 	//      steps{
 	  //checkout scm
 	    //  }    }
-    stage('SonarQube Analysis') {
-	    steps{
+  //  stage('SonarQube Analysis') {
+	 //   steps{
 		       
-      script{
-	 if (params.RUN_SONNAR ==true){
-      withSonarQubeEnv() {
-      sh "${mvnHome}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=testoutsidegit -Dsonar.projectName='testoutsidegit'"
-      }
-      }
-      }
-	    }
-    }	
+      //script{
+	// if (params.RUN_SONNAR ==true){
+     // withSonarQubeEnv() {
+     // sh "${mvnHome}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=testoutsidegit -Dsonar.projectName='testoutsidegit'"
+    //  }
+  //    }
+  //    }
+	 //   }
+   // }	
   
   
     
