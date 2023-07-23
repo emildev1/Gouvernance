@@ -94,7 +94,7 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
    stage('Initialize Docker'){    
 	   steps{
 	          script{
-	  env.PATH = "${dockerHome}\\bin:${env.PATH}"     
+	  env.PATH = "${dockerHome}/bin:${env.PATH}"     
 		  }
 	   }
     }
