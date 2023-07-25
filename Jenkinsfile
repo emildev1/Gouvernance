@@ -91,27 +91,33 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
   
   
     
-   stage('Initialize Docker'){    
-	   steps{
-	          script{
-	  env.PATH = "${dockerHome}/bin:${env.PATH}"     
-		  }
-	   }
-    }
+  // stage('Initialize Docker'){    
+	  // steps{
+	      //    script{
+	 // env.PATH = "${dockerHome}/bin:${env.PATH}"     
+		//  }
+	 //  }
+ //   }
     
-    stage('Build Docker Image') {
-	    steps{
-     bat "docker -H  tcp://7.tcp.eu.ngrok.io:18288  build -t gouvernance:${env.BUILD_NUMBER} ."
-	    }
-    }
+  //  stage('Build Docker Image') {
+	//    steps{
+    // bat "docker -H  tcp://7.tcp.eu.ngrok.io:18288  build -t gouvernance:${env.BUILD_NUMBER} ."
+	 //   }
+  //  }
     
-    stage('Deploy Docker Image'){
-	    steps{
-      	echo "Docker Image Tag Name: ${dockerImageTag}"
-	bat "docker -H  tcp://7.tcp.eu.ngrok.io:18288  run  --name gouvernance:${env.BUILD_NUMBER} -d -p 2222:2222 gouvernance:${env.BUILD_NUMBER}"
-	    }
-    }
-	  
+   // stage('Deploy Docker Image'){
+	   // steps{
+      	//echo "Docker Image Tag Name: ${dockerImageTag}"
+	//bat "docker -H  tcp://7.tcp.eu.ngrok.io:18288  run  --name gouvernance:${env.BUILD_NUMBER} -d -p 2222:2222 gouvernance:${env.BUILD_NUMBER}"
+	 //   }
+   // }
+	  stage ('Deploy') {
+      steps {
+        script {
+          deploy adapters: [tomcat9(credentialsId: 'tomcat_credential', path: '', url: 'http://10.12.1.182:8080/')], contextPath: '/gouvernance', onFailure: false, war: 'webapp/target/*.war' 
+        }
+      }
+    }  
 
 
 
