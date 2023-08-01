@@ -2,7 +2,7 @@ pipeline {
 	
     agent any
 	environment {
-   mvnHome = tool 'maven-3.9.2'
+   mvnHome = tool 'maven-3.9.1'
    dockerImage=""
 dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 		 dockerHome = tool 'MyDocker' 
